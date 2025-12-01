@@ -6,6 +6,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+import MedicoDashboard from "./pages/MedicoDashboard";
+
 
 import {supabase} from './supabase/client';
 
@@ -24,10 +26,11 @@ function App() {
   return (
     <div className="App">
       <Routes> 
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="*" element={<NotFound/>} />
+        <Route path="/" element={<MedicoDashboard />} />
       </Routes>
     </div>
   );
