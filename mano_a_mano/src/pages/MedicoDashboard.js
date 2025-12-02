@@ -1,42 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabase/client";
 import "./MedicoDashboard.css";
 
+const TABLA = "Paciente";
+
 const MedicoDashboard = () => {
-  const pacientes = [
-    {
-      id: 1,
-      nombre: "Rolando",
-      apellidos: "Mora Aguilar",
-      cama: "5",
-      piso: "2",
-      horaEntrada: "12/10/2025 11:59 hrs",
-      nuevo: true,
-      colorFila: "fila-amarilla",
-    },
-    {
-      id: 2,
-      nombre: "Fausta",
-      apellidos: "Robles Mondragón",
-      cama: "2",
-      piso: "1",
-      horaEntrada: "11/10/2025 18:32 hrs",
-      nuevo: false,
-      colorFila: "fila-azul",
-    },
-  ];
+  const navigate = useNavigate();
+  const [pacientes, setPacientes] = useState([]);
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const cargar = async () => {
+      setCargando(true);
+      setError(null);
+
+      const { data, error } = await supabase.from(TABLA).select("*");
+
+      if (error) {
+        console.error(error);
+        setError("Error al cargar pacientes");
+      } else {
+        setPacientes(data || []);
+      }
+      setCargando(false);
+    };
+
+    cargar();
+  }, []);
 
   const handleCerrarSesion = async () => {
     await supabase.auth.signOut();
     window.location.href = "/login";
   };
 
-  const handleAgregarPaciente = () => {
-    alert("Aquí iría el formulario para agregar paciente 🙂");
+  const calcularEdad = (fechaISO) => {
+    if (!fechaISO) return "-";
+    const fn = new Date(fechaISO);
+    if (Number.isNaN(fn.getTime())) return "-";
+    const hoy = new Date();
+    let edad = hoy.getFullYear() - fn.getFullYear();
+    const m = hoy.getMonth() - fn.getMonth();
+    if (m < 0 || (m === 0 && hoy.getDate() < fn.getDate())) {
+      edad--;
+    }
+    return `${edad} años`;
   };
 
   const handleVerPaciente = (paciente) => {
-    alert(`Ver detalles de ${paciente.nombre}`);
+    alert(
+      `Paciente: ${paciente.Nombre} ${paciente.A_Paterno || ""} ${
+        paciente.A_Materno || ""
+      }`
+    );
   };
 
   return (
@@ -80,37 +97,43 @@ const MedicoDashboard = () => {
             <h2>Pacientes asignados</h2>
 
             <button
+              type="button"
               className="tab-agregar-paciente"
-              onClick={handleAgregarPaciente}
-            >
-              Agregar paciente
+              onClick={() => navigate("/pacientes/nuevo")}
+              >
+            Agregar paciente
             </button>
+
           </div>
+
+          {cargando && (
+            <p style={{ padding: "10px 24px" }}>Cargando pacientes...</p>
+          )}
+          {error && (
+            <p style={{ padding: "10px 24px", color: "red" }}>{error}</p>
+          )}
 
           <div className="pacientes-tabla">
             <div className="pacientes-tabla-header">
               <span className="col-estado"></span>
               <span className="col-nombre">Nombre</span>
               <span className="col-apellidos">Apellidos</span>
-              <span className="col-cama">Cama</span>
-              <span className="col-piso">Piso</span>
-              <span className="col-hora">Hora entrada</span>
+              <span className="col-cama">Sexo</span>
+              <span className="col-piso">Identificación</span>
+              <span className="col-hora">Edad</span>
               <span className="col-acciones"></span>
             </div>
 
             {pacientes.map((p) => (
-              <div
-                key={p.id}
-                className={`pacientes-fila ${p.colorFila}`}
-              >
-                <div className="col-estado">
-                  {p.nuevo && <span className="badge-nuevo">Nuevo</span>}
+              <div key={p.ID} className="pacientes-fila fila-azul">
+                <div className="col-estado"></div>
+                <div className="col-nombre">{p.Nombre}</div>
+                <div className="col-apellidos">
+                  {(p.A_Paterno || "") + " " + (p.A_Materno || "")}
                 </div>
-                <div className="col-nombre">{p.nombre}</div>
-                <div className="col-apellidos">{p.apellidos}</div>
-                <div className="col-cama">{p.cama}</div>
-                <div className="col-piso">{p.piso}</div>
-                <div className="col-hora">{p.horaEntrada}</div>
+                <div className="col-cama">{p.Sexo || "-"}</div>
+                <div className="col-piso">{p["Identificación"] || "-"}</div>
+                <div className="col-hora">{calcularEdad(p.F_nacimiento)}</div>
                 <div className="col-acciones">
                   <button
                     className="btn-plus"
@@ -121,6 +144,12 @@ const MedicoDashboard = () => {
                 </div>
               </div>
             ))}
+
+            {!cargando && !error && pacientes.length === 0 && (
+              <p style={{ padding: "10px 24px" }}>
+                No hay pacientes registrados todavía.
+              </p>
+            )}
           </div>
         </section>
       </main>
