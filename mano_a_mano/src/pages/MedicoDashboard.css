@@ -1,0 +1,224 @@
+.medico-dashboard {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;  
+  background-color: #f5f7fb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+
+
+.medico-sidebar {
+  width: 220px;
+  background: #6aa9ff;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #fff;
+}
+
+.sidebar-menu {
+  margin-bottom: 32px;
+}
+
+.sidebar-item {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sidebar-item-active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.triage-box {
+  margin-top: auto;
+  background-color: #f5f5f5;
+  padding: 12px;
+  border-radius: 4px;
+  color: #333;
+}
+
+.triage-box h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.triage-level {
+  font-size: 12px;
+  padding: 4px 8px;
+  margin-bottom: 4px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+.triage-resus {
+  background-color: #ff4d4f;
+  color: #fff;
+}
+.triage-emerg {
+  background-color: #ffbf00;
+  color: #000;
+}
+.triage-urg {
+  background-color: #52c41a;
+  color: #000;
+}
+.triage-urg-menor {
+  background-color: #7bdcb5;
+  color: #000;
+}
+.triage-sin {
+  background-color: #8c9eff;
+  color: #000;
+}
+
+
+.medico-main {
+  flex: 1;
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+}
+
+
+.medico-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  width: 100%; 
+}
+
+.medico-saludo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.medico-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.medico-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cerrar-sesion {
+  border: none;
+  background: none;
+  color: #0070f3;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+.pacientes-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 16px 0 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  width: 100%;        
+  max-width: 1100px;  
+}
+
+.pacientes-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 24px 8px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.pacientes-card-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #1f2933;
+}
+
+.tab-agregar-paciente {
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid #0070f3;
+  padding: 6px 0;
+  font-size: 14px;
+  cursor: pointer;
+  color: #0070f3;
+}
+
+
+.pacientes-tabla {
+  padding: 10px 24px 0;
+}
+
+.pacientes-tabla-header,
+.pacientes-fila {
+  display: grid;
+  grid-template-columns: 90px 1.2fr 1.4fr 0.6fr 0.6fr 1.2fr 60px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.pacientes-tabla-header {
+  background-color: #1f4a7c;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px 4px 0 0;
+  font-weight: 600;
+}
+
+.pacientes-fila {
+  padding: 10px 12px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+
+.fila-amarilla {
+  background-color: #fffbe6;
+}
+
+.fila-azul {
+  background-color: #e6f0ff;
+}
+
+
+.badge-nuevo {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background-color: #52c41a;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+
+.btn-plus {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background-color: #0070f3;
+  color: white;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
