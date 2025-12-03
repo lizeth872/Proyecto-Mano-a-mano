@@ -1,34 +1,21 @@
-import './App.css'
-import {useEffect} from 'react'
-import {Routes, Route, useNavigate} from 'react-router-dom';
-
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
-
-import {supabase} from './supabase/client';
-
+import React from 'react';
+import LoginEnfermeroPersonalizado from './LoginEnfermero';
+import Dashboard from './dashboard/dashboard_main';
+import { useState } from 'react';
+import './index.css';
 function App() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    supabase.auth.onAuthStateChange((event, session) => {
-      if (!session) {
-        navigate('/login') //si el usuario no esta autenticado se envia a login
-      }else {
-        navigate('/') //si el usuario ya esta autenticado envialo a home 
-      }
-    });
-  }, [])
+  const [user, setUser] = useState(null);
+  const handleSuccess = (userData) => {
+    setUser(userData); 
+    localStorage.setItem('user', JSON.stringify(userData));
+  };
+  if (user) {
+    return <Dashboard user={user} />;
+  }
   return (
     <div className="App">
-      <Routes> 
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/signup" element={<Signup/>} />
-        <Route path="*" element={<NotFound/>} />
-      </Routes>
+        <LoginEnfermeroPersonalizado onLoginSuccess={handleSuccess}/>
+      
     </div>
   );
 }

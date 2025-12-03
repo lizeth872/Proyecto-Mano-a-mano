@@ -1,0 +1,12 @@
+
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL; 
+const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error("Faltan variables de entorno de Supabase. Verifica tu archivo .env");
+}
+
+// Inicializa el cliente Supabase
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);

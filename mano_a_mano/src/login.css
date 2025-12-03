@@ -1,0 +1,94 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+.title{
+    font-weight: bold;
+    font-size: xx-large;
+    margin: 0 auto;
+    text-align: center;
+}
+.subtitle{
+    font-weight: light;
+    margin: 0 auto;
+    text-align: center;
+    font-size: large;
+    margin-top: 2%;
+}
+
+.login-form{
+    text-align: center;
+
+}
+
+.label-title{
+    font-weight: bold;
+    font-size: large;
+}
+
+.input-template{
+    width: 100%;
+    height: 4vh;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: transparent;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.input-template2{
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: transparent;
+    margin-top: 5%;
+    height: 4vh;
+}
+
+.forgot{
+    color: #2C6CBF;
+    text-align: left;
+    font-weight:550 ;
+    font-size: small;
+}
+
+::placeholder{
+    font-size: large;
+}
+
+#main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.from-cont{
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-form{
+    width: 100%;
+}
+
+.login-image{
+    width: auto;
+    max-height: 100vh;
+    height: 100vh;
+    object-fit: cover;
+    max-width: 100%;
+}
+
+.image-container{
+    width: 35%;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
