@@ -12,6 +12,16 @@ function Dashboard() {
                     <li><div className='item'><b>Dashoard</b></div><div className='arrow'>&gt;</div></li>
                 </ul>
             </div>
+            <div id='triage'>
+                <h3>TRIAGE</h3>
+                <ul>
+                    <li className='red'>RESUCITACIÓN</li>
+                    <li className='orange'>EMERGENCIA</li>
+                    <li className='yellow'>URGENCIA</li>
+                    <li className='green'>URGENCIA MENOR</li>
+                    <li className='blue'>SIN URGENCIA</li>
+                </ul>
+            </div>
             <div id='user-info'>
                 <div id='nurse-name'><b>Hola $</b> - Piso $</div>
                 <div className='speciality'>Pediatría</div>

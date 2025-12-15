@@ -13,9 +13,10 @@ body{
 #sidebar{
     background-color: #80B2F2;
     grid-column: 1;
-    grid-row: 1/6;
+    grid-row: 1/5;
     padding-top: 3dvh;
-    margin-right: 6dvw;
+    font-size: large;
+    text-align: left;
 }
 
 #sidebar li {
@@ -27,7 +28,7 @@ body{
     padding: 0 1rem;
 }
 
-#sidebar ul {
+#sidebar ul, #triage ul {
     padding: 0;
     margin: 0;
 }
@@ -44,6 +45,7 @@ body{
     grid-column: 2/4;
     padding-top: 5dvh;
     grid-row: 1/2;
+    margin-left: 3dvw;
 }
 
 #nurse-name{
@@ -85,4 +87,38 @@ body{
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+#triage{
+    grid-column: 1;
+    grid-row: 5/9;
+    text-align: center;
+    width: 100%;
+    padding-top: 2dvh;
+}
+
+#triage ul li{ 
+    list-style-type: none;
+    padding: 2dvh 0 2dvh 0;
+    margin: 0 2dvw;
+}
+
+.red{
+    background-color: #FF7171;
+}
+
+.orange{
+    background-color: #FFD071;
+}
+
+.yellow{
+    background-color: #FCFEBD;
+}
+
+.green{
+    background-color: #BCF5B8;
+}
+
+.blue{
+    background-color: #BDCBFE;
 }
