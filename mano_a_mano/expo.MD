@@ -1,4 +1,4 @@
-# Documentación del Proyecto y Plan de Revisión de Código
+# Documentación del Proyecto
 
 Este documento detalla la funcionalidad de los módulos principales del sistema y los permisos necesarios para acceder a ellos.
 
